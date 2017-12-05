@@ -1,0 +1,71 @@
+# Carbon sources
+source_rename_map = {
+    "glu": "g6p",
+    "fru": "f6p",
+    "gnt": "6pgc",
+    "rib": "r5p",
+    "pyr": "pyr",
+    "xyl": "xu5p__D",
+    "2pg": "2pg",
+    "ace": "ac",
+    "gly": "dhap"
+}
+
+# Reactions
+reaction_rename_map = {    
+    "PTS": "FRUpts2 and GLCpts",
+    "PGI": "PGI",
+    "PFK": "PFK",
+    "FBP": "FBP",
+    "FBA": "FBA",
+    "TPI": "TPI",
+    "GAPD": "GAPD",
+    "GPM": "PGM",
+    "ENO": "ENO",
+    "PYK": "PYK",
+    "PPS": "PPS",
+    "PDH": "PDH",
+    "PFL": "PFL",
+    "ZWF": "G6PDH2r",
+    "GND": "GND",
+    "EDA": "EDA",
+    "RPE": "RPE",
+    "RPI": "RPI",
+    "TKT": "TKT1 and TKT2",
+    "TAL": "TALA",
+    "PPC": "PPC",
+    "PPCK": "PPCK",
+    "CS": "CS",
+    "ACONT": "ACONTa and ACONTb",
+    "ALCD2x": "ALCD2x",
+    "ACALD": "ACALD"
+}
+
+reaction_rename_map = {    
+    "PTS_1": ["FRUpts2", "GCL_pts"]
+    "PGI": ["PGI"],
+    "PFK": ["PFK"],
+    "FBP": ["FBP"],
+    "FBA": ["FBA"],
+    "TPI": ["TPI"],
+    "GAPD": ["GAPD"],
+    "GPM": ["PGM"],
+    "ENO": ["ENO"],
+    "PYK": ["PYK"],
+    "PPS": ["PPS"],
+    "PDH": ["PDH"],
+    "PFL": ["PFL"],
+    "ZWF": ["G6PDH2r"],
+    "GND": ["GND"],
+    "EDA": ["EDA"],
+    "RPE": ["RPE"],
+    "RPI": ["RPI"],
+    "TKT": ["TKT1", "TKT2"],
+    "TAL": ["TALA"],
+    "PPC": ["PPC"],
+    "PPCK": ["PPCK"],
+    "CS": ["CS"],
+    "ACONT": ["ACONTa", ACONTb],
+    "ALCD2x": ["ALCD2x"],
+    "ACALD": ["ACALD"],
+}

@@ -1,0 +1,93 @@
+# import numpy as np
+# import matplotlib.pyplot as plt
+# from matplotlib.colors import LinearSegmentedColormap
+#
+# x = np.arange(0, np.pi, 0.1)
+# y = np.arange(0, 2 * np.pi, 0.1)
+# X, Y = np.meshgrid(x, y)
+# Z = np.cos(X) * np.sin(Y) * 10
+#
+# # --- Colormaps from a list ---
+#
+# colors = [(0, 0, 0), (0, 0, 0), (0.2, 0.2, 0.2), (0, 1, 0)]  # R -> G -> B
+# n_bins = [3, 8, 16, 100]  # Discretizes the interpolation into bins
+# cmap_name = 'my_list'
+# fig, axs = plt.subplots(2, 2, figsize=(6, 9))
+# fig.subplots_adjust(left=0.02, bottom=0.06, right=0.95, top=0.94, wspace=0.05)
+# for n_bin, ax in zip(n_bins, axs.ravel()):
+#     # Create the colormap
+#     cm = LinearSegmentedColormap.from_list(
+#         cmap_name, colors, N=n_bin)
+#     # Fewer bins will result in "coarser" colomap interpolation
+#     im = ax.imshow(Z, interpolation='nearest', origin='lower', cmap=cm)
+#     ax.set_title("N bins: %s" % n_bin)
+#     fig.colorbar(im, ax=ax)
+#
+# plt.show()
+
+
+import matplotlib as m
+import matplotlib.pyplot as plt
+import numpy as np
+
+# blkmg = 0.001 # black margin at bottom of gradient
+# cdict = {
+#   'red':    ((0.000, 0.000, 0.000),
+#              (blkmg, 0.000, 0.200),
+#              (1.000, 0.300, 0.100)),
+#
+#   'green':  ((0.000, 0.000, 0.000),
+#              (blkmg, 0.000, 0.200),
+#              (1.000, 1.000, 0.100)),
+#
+#   'blue':   ((0.000, 0.000, 0.000),
+#              (blkmg, 0.000, 0.200),
+#              (1.000, 0.300, 0.100)),
+# }
+#
+# cm = m.colors.LinearSegmentedColormap('my_colormap', cdict, 1024)
+#
+# x = np.arange(0, 10, .1)
+# y = np.arange(0, 10, .1)
+# X, Y = np.meshgrid(x,y)
+#
+# data = 2*( np.sin(X) + np.sin(3*Y) )
+#
+# def do_plot(n, f, title):
+#     #plt.clf()
+#     plt.subplot(1, 3, n)
+#     plt.pcolor(X, Y, f(data), cmap=cm, vmin=-4, vmax=4)
+#     plt.title(title)
+#     plt.colorbar()
+#
+# plt.figure()
+# do_plot(1, lambda x:x, "all")
+# do_plot(2, lambda x:np.clip(x, -4, 0), "<0")
+# do_plot(3, lambda x:np.clip(x, 0, 4), ">0")
+# plt.show()
+
+answers = np.loadtxt('answers.txt')
+print(answers[1])
+
+
+def unwrap(data_mat):
+    out_list = []
+    if np.size(data_mat) != 6084 and np.size(data_mat, 1) != np.size(data_mat, 2):
+        print("The passed array is of the wrong size!  Must be 78 X 78.")
+    for i_ko_1 in range(26):
+        row = 3 * i_ko_1
+        for i_ko_2 in range(26):
+            col = 3 * i_ko_2
+            d_row, d_col = (0, 0)
+            for i_source in range(9):
+                if d_row == 3:
+                    d_row = 0
+                    d_col = d_col + 1
+                val = data_mat[row + d_row, col + d_col]
+                out_list.append(val)
+                d_row += 1
+    return out_list
+
+print(unwrap(answers))
+
+
